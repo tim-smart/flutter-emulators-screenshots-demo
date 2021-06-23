@@ -6,6 +6,9 @@ Future<void> main() async {
   // Create the config instance
   final config = await emu.buildConfig();
 
+  // Shutdown all the running emulators
+  await emu.shutdownAll(config);
+
   // Make sure the Nexus_5X android emulator exists.
   // We use the avdmanager CLI tool for this.
   // You might need to install some packages in Android Studio for this to work.
