@@ -24,13 +24,24 @@ Future<void> main() async {
     '-f',
   ]);
 
+  final configs = [
+    {'locale': 'en'},
+    {'locale': 'fr'},
+  ];
+
   // For each emulator in the list, we run `flutter drive`.
   await emu.forEach(config)([
     'Nexus_5X',
     'iPhone 8 Plus',
     'iPhone 12 Pro',
   ])((device) async {
-    final p = await emu.drive(config)(device, 'test_driver/main.dart');
-    await stdout.addStream(p.stdout);
+    for (final c in configs) {
+      final p = await emu.drive(config)(
+        device,
+        'test_driver/main.dart',
+        config: c,
+      );
+      await stdout.addStream(p.stdout);
+    }
   });
 }

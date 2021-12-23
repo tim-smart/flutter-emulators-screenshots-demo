@@ -11,6 +11,7 @@ Future<void> main() async {
   final screenshot = emu.writeScreenshotFromEnv(config)(
     androidPath: 'screenshots/android',
     iosPath: 'screenshots/ios',
+    suffixes: [emu.getString('locale')!],
   );
 
   setUpAll(() async {
