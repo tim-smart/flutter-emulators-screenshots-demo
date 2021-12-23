@@ -109,9 +109,9 @@ packages:
   emulators:
     dependency: "direct dev"
     description:
-      path: "../flutter-emulators"
-      relative: true
-    source: path
+      name: emulators
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "0.2.3"
   fake_async:
     dependency: transitive
@@ -189,11 +189,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.0"
-  integration_test:
-    dependency: "direct dev"
-    description: flutter
-    source: sdk
-    version: "0.0.0"
   io:
     dependency: transitive
     description:
