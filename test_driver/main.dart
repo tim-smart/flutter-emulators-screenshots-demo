@@ -1,4 +1,6 @@
-import 'package:emulators/emulators.dart' as emu;
+// ignore_for_file: avoid_print
+
+import 'package:emulators/emulators.dart';
 import 'package:emulators_demo/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_driver/driver_extension.dart';
@@ -10,10 +12,10 @@ void main() {
   // Enable flutter driver
   enableFlutterDriverExtension();
 
-  final locale = emu.getString('locale');
-  print('Device: ${emu.currentDevice()}');
+  final locale = Environment.getString('locale');
+  print('Device: ${Environment.device}');
   print('Locale: $locale');
 
   // Run the app. You could pass in `locale` here.
-  runApp(MyApp());
+  runApp(const MyApp());
 }

@@ -1,4 +1,4 @@
-import 'package:emulators/emulators.dart' as emu;
+import 'package:emulators/emulators.dart';
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:test/test.dart';
 
@@ -7,18 +7,18 @@ Future<void> main() async {
   final driver = await FlutterDriver.connect();
 
   // Setup emulators package
-  final config = await emu.buildConfig();
-  final screenshot = emu.writeScreenshotFromEnv(config)(
+  final emu = await Emulators.build();
+  final screenshot = emu.screenshotHelper(
     androidPath: 'screenshots/android',
     iosPath: 'screenshots/ios',
-    suffixes: [emu.getString('locale')!],
+    suffixes: [Environment.getString('locale')!],
   );
 
   setUpAll(() async {
     await driver.waitUntilFirstFrameRasterized();
 
     // Clean up the status bar for the device
-    await emu.cleanStatusBarFromEnv(config);
+    await screenshot.cleanStatusBar();
   });
 
   // Close the connection to the driver after the tests have completed.
@@ -29,7 +29,7 @@ Future<void> main() async {
   group('Screenshots', () {
     test('home screen', () async {
       await driver.waitFor(find.text('Flutter Demo Home Page'));
-      await screenshot('01');
+      await screenshot.capture('01');
     });
 
     final buttonFinder = find.byTooltip('Increment');
@@ -38,7 +38,7 @@ Future<void> main() async {
       await driver.tap(buttonFinder);
       await driver.tap(buttonFinder);
       await driver.waitUntilNoTransientCallbacks();
-      await screenshot('02');
+      await screenshot.capture('02');
     });
   });
 }
