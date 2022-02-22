@@ -31,9 +31,9 @@ Future<void> main() async {
 
   // For each emulator in the list, we run `flutter drive`.
   await emu.forEach([
-    // 'Nexus_5X',
+    'Nexus_5X',
     'iPhone 8 Plus',
-    // 'iPhone 12 Pro',
+    'iPhone 12 Pro',
   ])((device) async {
     for (final c in configs) {
       final p = await emu.drive(
