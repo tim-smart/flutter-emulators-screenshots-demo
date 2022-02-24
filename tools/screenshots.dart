@@ -18,7 +18,7 @@ Future<void> main() async {
     '-n',
     'Nexus_5X',
     '-k',
-    'system-images;android-30;google_apis_playstore;x86',
+    'system-images;android-31;google_apis_playstore;x86_64',
     '-d',
     'Nexus 5X',
     '-f',
